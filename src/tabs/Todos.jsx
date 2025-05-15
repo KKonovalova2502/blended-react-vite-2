@@ -74,7 +74,7 @@ const Todos = () => {
           cancelUpdate={cancelUpdate}
         />
       ) : (
-        <Form onSubmit={addNewTodo} />
+        <Form onSubmit={addNewTodo} withId />
       )}
 
       {todos.length === 0 ? (

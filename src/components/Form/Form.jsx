@@ -2,16 +2,20 @@ import { FiSearch } from 'react-icons/fi';
 import { nanoid } from 'nanoid';
 import style from './Form.module.css';
 
-const Form = ({ onSubmit }) => {
+const Form = ({ onSubmit, withId = false }) => {
   const handleSubmit = evt => {
     evt.preventDefault();
     const form = evt.target;
     const searchValue = form.elements.search.value.trim();
-    if (searchValue) {
+    if (!searchValue) return;
+
+    if (withId) {
       onSubmit({
         id: nanoid(),
         text: searchValue,
       });
+    } else {
+      onSubmit(searchValue);
     }
     form.reset();
   };
